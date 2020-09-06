@@ -1,25 +1,33 @@
-import React, { useState } from 'react';
-import { Button, FormControl, InputLabel, Input, FormHelperText } from '@material-ui/core';
+import React, { useState, useEffect } from 'react';
+import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
+
+import Message from './components/Message';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState(['hello', 'hi']);
+  const [messages, setMessages] = useState([{username: 'Diogo', text: 'Olá pessoal'}]);
+  const [username, setUsername] = useState('');
 
-  console.log(input);
-  console.log(messages);
+  // useState = variavel do react
+  // useEffect = rodar código sobre uma condição no react
+
+  useEffect(() => {
+    setUsername(prompt('Please enter your name'));
+  }, [])
 
   const sendMessage = (event) => {
     // toda a lógica para enviar uma mensagem
 
     event.preventDefault(); //Desativa o refresh do form
-    setMessages([...messages, input]);
+    setMessages([...messages, {username: username, text: input}]);
     setInput(''); //Sempre que enviamos a msg, o input fica vazio
   }
   
   return (
     <div className="App">
       <h1>Hello</h1>
+      <h2>Bem vindo {username}</h2>
 
       <form>
 
@@ -33,7 +41,7 @@ function App() {
 
       {
         messages.map(message => (
-          <p>{message}</p>
+          <Message username={message.username} text={message.text} />
         ))
       }
     </div>
