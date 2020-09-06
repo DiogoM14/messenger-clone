@@ -3,24 +3,37 @@ import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
 import './App.css';
 
 import Message from './components/Message';
+import db from './services/firebase';
+import firebase from 'firebase';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([{username: 'Diogo', text: 'Olá pessoal'}]);
+  const [messages, setMessages] = useState([{username: 'Diogo', message: 'Olá pessoal'}]);
   const [username, setUsername] = useState('');
 
   // useState = variavel do react
   // useEffect = rodar código sobre uma condição no react
 
+  useEffect(() => { //Sempre que o app inicia, é feito um map os documents da db
+    db.collection('messages').onSnapshot(snapshot => {
+      setMessages(snapshot.docs.map(doc => doc.data()))
+    }) 
+  }, []);
+
   useEffect(() => {
     setUsername(prompt('Please enter your name'));
-  }, [])
+  }, []);
 
   const sendMessage = (event) => {
     // toda a lógica para enviar uma mensagem
 
     event.preventDefault(); //Desativa o refresh do form
-    setMessages([...messages, {username: username, text: input}]);
+
+    db.collection('messages').add({
+      message: input,
+      username: username,
+      timestamp: firebase.firestore.FieldValue.serverTimestamp()
+    })
     setInput(''); //Sempre que enviamos a msg, o input fica vazio
   }
   
