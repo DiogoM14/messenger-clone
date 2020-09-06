@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
 import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import FlipMove from 'react-flip-move';
 import './App.css';
 
 import Message from './components/Message';
@@ -16,7 +17,7 @@ function App() {
 
   useEffect(() => { //Sempre que o app inicia, é feito um map os documents da db
     db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
-      setMessages(snapshot.docs.map(doc => doc.data()))
+      setMessages(snapshot.docs.map(doc => ({id: doc.id, message: doc.data()})))
     }) 
   }, []);
 
@@ -52,11 +53,13 @@ function App() {
         
       </form>
 
-      {
-        messages.map(message => (
-          <Message username={username} message={message} />
-        ))
-      } 
+      <FlipMove>
+        {
+          messages.map(({ id, message }) => (
+            <Message key={id} username={username} message={message} />
+          ))
+        } 
+      </FlipMove>
     </div>
   );
 }
