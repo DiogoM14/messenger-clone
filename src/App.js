@@ -46,10 +46,10 @@ function App() {
       <h2>Bem vindo {username}</h2>
 
       <form className="app__form">
-        <FormControl>
+        <FormControl className="app__formControl">
           <InputLabel>Enter a message...</InputLabel>
-          <Input value={input} onChange={ event => setInput(event.target.value)} />
-          <IconButton disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>
+          <Input className="app__input" value={input} onChange={ event => setInput(event.target.value)} />
+          <IconButton className="app__button" disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>
             <SendIcon />
           </IconButton>
         </FormControl>

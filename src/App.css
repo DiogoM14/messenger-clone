@@ -8,6 +8,20 @@
   bottom: 0;
   z-index: 1;
   background: #e9e9eb;
-  width: 100%;
+  width: 90%;
   margin: 20px;
 }
+
+.app__input {
+  flex: 1;
+}
+
+.app__button {
+  flex: 0;
+}
+
+.app__formControl {
+  display: flex !important;
+  flex-direction: row !important;
+}
+
