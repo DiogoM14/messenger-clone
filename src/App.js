@@ -1,5 +1,6 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Input } from '@material-ui/core';
+import { Button, FormControl, InputLabel, Input, IconButton } from '@material-ui/core';
+import SendIcon from '@material-ui/icons/Send';
 import FlipMove from 'react-flip-move';
 import './App.css';
 
@@ -30,7 +31,7 @@ function App() {
 
     event.preventDefault(); //Desativa o refresh do form
 
-    db.collection('messages').add({
+    db.collection('messages').add({ // Adiciona a mensagem à db
       message: input,
       username: username,
       timestamp: firebase.firestore.FieldValue.serverTimestamp()
@@ -40,17 +41,18 @@ function App() {
   
   return (
     <div className="App">
-      <h1>Hello</h1>
+      <img src="https://facebookbrand.com/wp-content/uploads/2019/10/Messenger_Logo_Color_RGB.png?w=100&h=100" />
+      <h1>Facebook Messenger</h1>
       <h2>Bem vindo {username}</h2>
 
-      <form>
-
+      <form className="app__form">
         <FormControl>
           <InputLabel>Enter a message...</InputLabel>
           <Input value={input} onChange={ event => setInput(event.target.value)} />
-          <Button disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>Send Message</Button>
+          <IconButton disabled={!input} variant="contained" color="primary" type='submit' onClick={sendMessage}>
+            <SendIcon />
+          </IconButton>
         </FormControl>
-        
       </form>
 
       <FlipMove>
