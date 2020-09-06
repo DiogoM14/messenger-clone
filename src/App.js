@@ -15,7 +15,7 @@ function App() {
   // useEffect = rodar código sobre uma condição no react
 
   useEffect(() => { //Sempre que o app inicia, é feito um map os documents da db
-    db.collection('messages').onSnapshot(snapshot => {
+    db.collection('messages').orderBy('timestamp', 'desc').onSnapshot(snapshot => {
       setMessages(snapshot.docs.map(doc => doc.data()))
     }) 
   }, []);
