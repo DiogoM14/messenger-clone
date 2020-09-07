@@ -4,7 +4,7 @@ const firebaseApp = firebase.initializeApp({
     apiKey: process.env.API_KEY,
     authDomain: process.env.AUTH_DOMAIN,
     databaseURL: process.env.DATA_BASE_URL,
-    projectId: process.env.PROJECT_ID,
+    projectId: "facebook-messenger-clone-35b4e",
     storageBucket: process.env.STORAGE_BUCKET,
     messagingSenderId: process.env.MESSAGING_SENDER_ID,
     appId: process.env.APP_ID,
