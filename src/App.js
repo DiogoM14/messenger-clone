@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import { Button, FormControl, InputLabel, Input, IconButton } from '@material-ui/core';
+import { FormControl, InputLabel, Input, IconButton } from '@material-ui/core';
 import SendIcon from '@material-ui/icons/Send';
 import FlipMove from 'react-flip-move';
 import './App.css';
