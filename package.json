@@ -14,6 +14,14 @@
     "react-flip-move": "^3.0.4",
     "react-scripts": "3.4.3"
   },
+  "author": {
+    "email": "diogomartins200214@gmail.com",
+    "name": "Diogo Martins",
+    "url": "https://github.com/Xavi002"
+  },
+  "repository": {
+    "url": "https://github.com/Xavi002/messenger-clone"
+  },
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
