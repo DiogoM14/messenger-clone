@@ -10,7 +10,7 @@ import firebase from 'firebase';
 
 function App() {
   const [input, setInput] = useState('');
-  const [messages, setMessages] = useState([{username: 'Diogo', message: 'Olá pessoal'}]);
+  const [messages, setMessages] = useState([{username: '', message: ''}]);
   const [username, setUsername] = useState('');
 
   // useState = variavel do react
@@ -43,7 +43,7 @@ function App() {
     <div className="App">
       <img src="https://facebookbrand.com/wp-content/uploads/2019/10/Messenger_Logo_Color_RGB.png?w=100&h=100" />
       <h1>Facebook Messenger</h1>
-      <h2>Bem vindo {username}</h2>
+      <h2>Welcome {username}</h2>
 
       <form className="app__form">
         <FormControl className="app__formControl">
